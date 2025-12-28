@@ -5,12 +5,23 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 
+import Landing from "@/pages/Landing";
+import Login from "@/pages/Login";
+import Dashboard from "@/pages/Dashboard";
+import ProductList from "@/pages/ProductList";
+import Cart from "@/pages/Cart";
+
 function Router() {
   return (
     <Switch>
-      {/* Add pages below */}
-      {/* <Route path="/" component={Home}/> */}
-      {/* Fallback to 404 */}
+      <Route path="/" component={Landing} />
+      <Route path="/login" component={Login} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/products" component={ProductList} />
+      <Route path="/cart" component={Cart} />
+      {/* Placeholder for other routes if needed */}
+      <Route path="/orders" component={Dashboard} /> 
+      <Route path="/settings" component={Dashboard} />
       <Route component={NotFound} />
     </Switch>
   );
