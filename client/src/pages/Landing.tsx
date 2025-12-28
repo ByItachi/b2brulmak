@@ -3,18 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2, Globe, ShieldCheck, Truck } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "@assets/logo-white_1766887510744.png";
+import logoBlack from "@assets/logo_1766887510744.png";
+import slide4 from "@assets/4_1766887442960.jpg";
+import slide5 from "@assets/5_1766887442961.jpg";
+import slide6 from "@assets/6_1766887442961.jpg";
+import slide7 from "@assets/7_1766887442961.jpg";
+import slide8 from "@assets/8_1766887442962.jpg";
+import slide1 from "@assets/1_1766887478916.jpg";
+import slide2 from "@assets/2_1766887478916.jpg";
+import slide3 from "@assets/3_1766887478916.jpg";
 
-const sliderImages = [
-  "@assets/4_1766887442960.jpg",
-  "@assets/5_1766887442961.jpg",
-  "@assets/6_1766887442961.jpg",
-  "@assets/7_1766887442961.jpg",
-  "@assets/8_1766887442962.jpg",
-  "@assets/1_1766887478916.jpg",
-  "@assets/2_1766887478916.jpg",
-  "@assets/3_1766887478916.jpg",
-];
+const sliderImages = [slide4, slide5, slide6, slide7, slide8, slide1, slide2, slide3];
 
 export default function Landing() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,15 +28,15 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-background flex flex-col font-sans">
       {/* Navigation */}
-      <nav className="border-b bg-card/80 backdrop-blur-md sticky top-0 z-50">
+      <nav className="border-b bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-             <img src={logo} alt="RULMAK Logo" className="h-10 w-auto" />
+             <img src={logoBlack} alt="RULMAK Logo" className="h-10 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#ozellikler" className="text-sm font-medium hover:text-primary transition-colors">Çözümler</a>
-            <a href="#hakkimizda" className="text-sm font-medium hover:text-primary transition-colors">Hakkımızda</a>
-            <a href="#iletisim" className="text-sm font-medium hover:text-primary transition-colors">İletişim</a>
+            <a href="#ozellikler" className="text-sm font-medium text-foreground hover:text-primary transition-colors">Çözümler</a>
+            <a href="#hakkimizda" className="text-sm font-medium text-foreground hover:text-primary transition-colors">Hakkımızda</a>
+            <a href="#iletisim" className="text-sm font-medium text-foreground hover:text-primary transition-colors">İletişim</a>
           </div>
           <div className="flex items-center gap-4">
              <Link href="/login">
@@ -45,12 +44,17 @@ export default function Landing() {
                  Bayi Girişi <ArrowRight className="ml-2 h-4 w-4" />
                </Button>
              </Link>
+             <Link href="/admin">
+               <Button variant="ghost" className="font-semibold text-primary hover:bg-primary/10">
+                 Admin
+               </Button>
+             </Link>
           </div>
         </div>
       </nav>
 
       {/* Hero Section with Slider */}
-      <div className="relative overflow-hidden bg-muted/10 h-96 md:h-[500px]">
+      <div className="relative overflow-hidden bg-muted h-96 md:h-[500px]">
         {/* Slider Container */}
         <div className="relative w-full h-full">
           {sliderImages.map((img, idx) => (
@@ -67,21 +71,21 @@ export default function Landing() {
               />
             </div>
           ))}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-10" />
         </div>
 
         {/* Hero Content */}
         <div className="absolute inset-0 z-20 flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
             <div className="max-w-2xl space-y-8">
-              <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
-                 <span className="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
+              <div className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-3 py-1 text-sm font-medium text-white">
+                 <span className="flex h-2 w-2 rounded-full bg-white mr-2"></span>
                  Türkiye'nin Önde Gelen B2B Platformu
               </div>
-              <h1 className="text-5xl lg:text-7xl font-heading font-bold tracking-tight text-foreground leading-[1.1]">
-                Hareket için <span className="text-primary">Tasarlandı</span>.
+              <h1 className="text-5xl lg:text-7xl font-heading font-bold tracking-tight text-white leading-[1.1]">
+                Hareket için <span className="text-blue-400">Tasarlandı</span>.
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
+              <p className="text-xl text-white/90 leading-relaxed max-w-xl">
                 50.000'den fazla endüstriyel rulman ürününü özel bayi fiyatlandırması ile erişin. 
                 Modern tedarik zinciri için uygulanmış çözümler.
               </p>
@@ -91,7 +95,7 @@ export default function Landing() {
                      Bayi Portalı
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-2">
+                <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-2 border-white text-white bg-transparent hover:bg-white/10">
                   İş Ortağı Ol
                 </Button>
               </div>
@@ -106,7 +110,7 @@ export default function Landing() {
               key={idx}
               onClick={() => setCurrentSlide(idx)}
               className={`h-2 rounded-full transition-all ${
-                idx === currentSlide ? "bg-primary w-8" : "bg-white/40 w-2 hover:bg-white/60"
+                idx === currentSlide ? "bg-white w-8" : "bg-white/40 w-2 hover:bg-white/60"
               }`}
               data-testid={`slider-dot-${idx}`}
             />
@@ -115,10 +119,10 @@ export default function Landing() {
       </div>
 
       {/* Features Grid */}
-      <section id="ozellikler" className="py-24 bg-card">
+      <section id="ozellikler" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-heading font-bold mb-4">Neden Bizi Seçmelisiniz?</h2>
+            <h2 className="text-3xl font-heading font-bold mb-4 text-foreground">Neden Bizi Seçmelisiniz?</h2>
             <p className="text-muted-foreground text-lg">Yüksek hacimli endüstriyel tedarik için sağlam bir altyapı sunuyoruz.</p>
           </div>
           
@@ -145,7 +149,7 @@ export default function Landing() {
                   <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6 text-primary">
                     <feature.icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                  <h3 className="text-xl font-bold mb-2 text-foreground">{feature.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
                 </CardContent>
               </Card>
@@ -155,7 +159,7 @@ export default function Landing() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-20 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -166,7 +170,7 @@ export default function Landing() {
             ].map((stat, i) => (
               <div key={i} className="space-y-2">
                 <div className="text-4xl md:text-5xl font-heading font-bold">{stat.value}</div>
-                <div className="text-primary-foreground/80 font-medium">{stat.label}</div>
+                <div className="text-white/80 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -174,20 +178,20 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-sidebar text-sidebar-foreground py-12 border-t border-white/10 mt-auto">
+      <footer className="bg-sidebar text-white py-12 border-t border-white/10 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2">
                <div className="flex items-center gap-3 mb-6">
-                 <img src={logo} alt="Logo" className="h-8 w-auto" />
+                 <img src={logoBlack} alt="Logo" className="h-8 w-auto bg-white rounded p-1" />
                </div>
-               <p className="text-sidebar-foreground/60 max-w-sm mb-6">
-                 Rulman dağıtım teknolojisinde endüstriye öncülük etmekteyiz. Tedarik zincirieleştirmek için bize katılın.
+               <p className="text-white/60 max-w-sm mb-6">
+                 Rulman dağıtım teknolojisinde endüstriye öncülük etmekteyiz. Tedarik zinciriinizi iyileştirmek için bize katılın.
                </p>
             </div>
             <div>
               <h4 className="font-bold mb-6">Hızlı Bağlantılar</h4>
-              <ul className="space-y-3 text-sidebar-foreground/60">
+              <ul className="space-y-3 text-white/60">
                 <li><a href="#" className="hover:text-white transition-colors">Hakkımızda</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Ürün Kataloğu</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Bayi Başvurusu</a></li>
@@ -196,14 +200,14 @@ export default function Landing() {
             </div>
             <div>
               <h4 className="font-bold mb-6">Yasal</h4>
-              <ul className="space-y-3 text-sidebar-foreground/60">
+              <ul className="space-y-3 text-white/60">
                 <li><a href="#" className="hover:text-white transition-colors">Gizlilik Politikası</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Hizmet Şartları</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Çerez Politikası</a></li>
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-white/10 text-center text-sidebar-foreground/40 text-sm">
+          <div className="pt-8 border-t border-white/10 text-center text-white/40 text-sm">
             © 2024 RULMAK B2B Sistemleri. Tüm Hakları Saklıdır.
           </div>
         </div>
