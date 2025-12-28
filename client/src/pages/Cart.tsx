@@ -9,7 +9,6 @@ import { getCart, removeFromCart, clearCart, MOCK_DEALER } from "@/lib/mockData"
 import { Trash2, ArrowRight, ArrowLeft } from "lucide-react";
 
 export default function Cart() {
-  // Simple force update hack since we aren't using real Context for this mock
   const [cartItems, setCartItems] = useState(getCart());
 
   const handleRemove = (id: string) => {
@@ -28,19 +27,19 @@ export default function Cart() {
     return acc + (finalPrice * item.quantity);
   }, 0);
 
-  const tax = subtotal * 0.18; // 18% VAT example
+  const tax = subtotal * 0.18;
   const total = subtotal + tax;
 
   return (
     <DashboardLayout>
       <div className="max-w-4xl mx-auto space-y-6">
-        <h2 className="text-3xl font-heading font-bold">Shopping Cart</h2>
+        <h2 className="text-3xl font-heading font-bold">Alışveriş Sepeti</h2>
 
         {cartItems.length === 0 ? (
           <div className="text-center py-20 bg-card rounded-lg border border-dashed border-border">
-            <h3 className="text-lg font-medium text-muted-foreground mb-4">Your cart is empty</h3>
+            <h3 className="text-lg font-medium text-muted-foreground mb-4">Sepetiniz boş</h3>
             <Link href="/products">
-              <Button>Browse Products</Button>
+              <Button>Ürünleri Gözat</Button>
             </Link>
           </div>
         ) : (
@@ -49,9 +48,9 @@ export default function Cart() {
               <Card className="shadow-sm">
                 <CardHeader className="pb-2">
                    <div className="flex justify-between items-center">
-                     <CardTitle className="text-lg">Order Items ({cartItems.length})</CardTitle>
+                     <CardTitle className="text-lg">Sipariş Ürünleri ({cartItems.length})</CardTitle>
                      <Button variant="ghost" size="sm" onClick={handleClear} className="text-destructive hover:text-destructive hover:bg-destructive/10">
-                       Clear All
+                       Hepsini Sil
                      </Button>
                    </div>
                 </CardHeader>
@@ -59,9 +58,9 @@ export default function Cart() {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Product</TableHead>
-                        <TableHead className="text-center">Qty</TableHead>
-                        <TableHead className="text-right">Price</TableHead>
+                        <TableHead>Ürün</TableHead>
+                        <TableHead className="text-center">Mik.</TableHead>
+                        <TableHead className="text-right">Fiyat</TableHead>
                         <TableHead></TableHead>
                       </TableRow>
                     </TableHeader>
@@ -81,7 +80,7 @@ export default function Cart() {
                             </TableCell>
                             <TableCell className="text-right">
                               <div className="font-bold">{item.product.currency} {(finalPrice * item.quantity).toFixed(2)}</div>
-                              <div className="text-xs text-muted-foreground">Unit: {finalPrice.toFixed(2)}</div>
+                              <div className="text-xs text-muted-foreground">Birim: {finalPrice.toFixed(2)}</div>
                             </TableCell>
                             <TableCell>
                               <Button variant="ghost" size="icon" onClick={() => handleRemove(item.product.id)}>
@@ -100,30 +99,30 @@ export default function Cart() {
             <div className="md:col-span-1">
               <Card className="sticky top-24 shadow-sm border-primary/20 bg-primary/5">
                 <CardHeader>
-                  <CardTitle>Order Summary</CardTitle>
+                  <CardTitle>Sipariş Özeti</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Subtotal</span>
+                    <span className="text-muted-foreground">Ara Toplam</span>
                     <span className="font-mono font-medium">{MOCK_DEALER.currency} {subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">VAT (18%)</span>
+                    <span className="text-muted-foreground">KDV (%18)</span>
                     <span className="font-mono font-medium">{MOCK_DEALER.currency} {tax.toFixed(2)}</span>
                   </div>
                   <Separator className="bg-primary/20" />
                   <div className="flex justify-between text-lg font-bold text-primary">
-                    <span>Total</span>
+                    <span>Toplam</span>
                     <span>{MOCK_DEALER.currency} {total.toFixed(2)}</span>
                   </div>
                 </CardContent>
                 <CardFooter className="flex-col gap-3">
                   <Button className="w-full text-lg h-12 shadow-md shadow-primary/20">
-                    Checkout Now <ArrowRight className="ml-2 h-4 w-4" />
+                    Ödemeye Geç <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                   <Link href="/products">
                     <Button variant="outline" className="w-full bg-transparent border-primary/20 text-primary hover:bg-primary/10">
-                      <ArrowLeft className="mr-2 h-4 w-4" /> Continue Shopping
+                      <ArrowLeft className="mr-2 h-4 w-4" /> Alışverişe Devam Et
                     </Button>
                   </Link>
                 </CardFooter>

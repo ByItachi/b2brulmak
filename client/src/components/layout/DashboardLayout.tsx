@@ -14,7 +14,7 @@ import {
   Bell
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@assets/generated_images/modern_industrial_minimalist_company_logo.png";
+import logo from "@assets/logo-white_1766887510744.png";
 import { MOCK_DEALER, getCart } from "@/lib/mockData";
 
 interface DashboardLayoutProps {
@@ -27,11 +27,11 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const cartItemCount = getCart().length;
 
   const navItems = [
-    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/products", label: "Product Search", icon: PackageSearch },
-    { href: "/cart", label: "My Order", icon: ShoppingCart, badge: cartItemCount > 0 ? cartItemCount : null },
-    { href: "/orders", label: "Order History", icon: FileText },
-    { href: "/settings", label: "Settings", icon: Settings },
+    { href: "/dashboard", label: "Pano", icon: LayoutDashboard },
+    { href: "/products", label: "Ürün Ara", icon: PackageSearch },
+    { href: "/cart", label: "Siparişim", icon: ShoppingCart, badge: cartItemCount > 0 ? cartItemCount : null },
+    { href: "/orders", label: "Sipariş Geçmişi", icon: FileText },
+    { href: "/settings", label: "Ayarlar", icon: Settings },
   ];
 
   return (
@@ -44,8 +44,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         )}
       >
         <div className="h-16 flex items-center px-6 border-b border-sidebar-border/50">
-           <img src={logo} alt="Company Logo" className="h-8 w-auto mr-3 bg-white rounded p-0.5" />
-           <span className="font-heading font-bold text-lg tracking-wide">RULMAN B2B</span>
+           <img src={logo} alt="RULMAK Logo" className="h-8 w-auto" />
         </div>
 
         <div className="flex-1 py-6 px-3 space-y-1">
@@ -87,7 +86,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <Link href="/login">
             <Button variant="outline" className="w-full justify-start text-sidebar-foreground border-sidebar-border hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
               <LogOut className="h-4 w-4 mr-2" />
-              Sign Out
+              Çıkış Yap
             </Button>
           </Link>
         </div>
@@ -102,15 +101,15 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                {isSidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
              </Button>
              <h1 className="text-xl font-heading font-semibold text-foreground hidden sm:block">
-               {navItems.find(i => i.href === location)?.label || "Dashboard"}
+               {navItems.find(i => i.href === location)?.label || "Pano"}
              </h1>
           </div>
 
           <div className="flex items-center gap-4">
              <div className="text-right hidden md:block">
-               <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Current Balance</p>
+               <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Güncel Bakiye</p>
                <p className="text-sm font-bold text-destructive font-mono">
-                 {MOCK_DEALER.currency} {MOCK_DEALER.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                 {MOCK_DEALER.currency} {MOCK_DEALER.balance.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}
                </p>
              </div>
              <div className="h-8 w-px bg-border hidden md:block" />

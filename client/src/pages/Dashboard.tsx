@@ -11,47 +11,47 @@ export default function Dashboard() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Orders (YTD)</CardTitle>
+            <CardTitle className="text-sm font-medium">Toplam Sipariş (YTD)</CardTitle>
             <Package className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold font-mono">1,248</div>
-            <p className="text-xs text-muted-foreground">+12% from last month</p>
+            <div className="text-2xl font-bold font-mono">1.248</div>
+            <p className="text-xs text-muted-foreground">+12% geçen aydan itibaren</p>
           </CardContent>
         </Card>
         
         <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Current Balance</CardTitle>
+            <CardTitle className="text-sm font-medium">Güncel Bakiye</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold font-mono text-destructive">
-               {MOCK_DEALER.currency} {MOCK_DEALER.balance.toLocaleString()}
+               {MOCK_DEALER.currency} {MOCK_DEALER.balance.toLocaleString('tr-TR')}
             </div>
-            <p className="text-xs text-muted-foreground">Due in 15 days</p>
+            <p className="text-xs text-muted-foreground">15 gün içinde ödenmeli</p>
           </CardContent>
         </Card>
 
         <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Discount Group</CardTitle>
+            <CardTitle className="text-sm font-medium">Aktif İndirim Grubu</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold font-heading">Group {MOCK_DEALER.group}</div>
-            <p className="text-xs text-muted-foreground">Standard Dealer Rates</p>
+            <div className="text-2xl font-bold font-heading">Grup {MOCK_DEALER.group}</div>
+            <p className="text-xs text-muted-foreground">Standart Bayi Tarifeleri</p>
           </CardContent>
         </Card>
 
         <Card className="shadow-sm hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pending Approvals</CardTitle>
+            <CardTitle className="text-sm font-medium">Beklemede Olanlar</CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold font-mono">3</div>
-            <p className="text-xs text-muted-foreground">Special order requests</p>
+            <p className="text-xs text-muted-foreground">Özel sipariş talepleri</p>
           </CardContent>
         </Card>
       </div>
@@ -61,19 +61,19 @@ export default function Dashboard() {
         <Card className="lg:col-span-2 shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
-              <CardTitle>Recent Orders</CardTitle>
-              <CardDescription>You have 3 active orders in transit.</CardDescription>
+              <CardTitle>Son Siparişler</CardTitle>
+              <CardDescription>3 aktif siparişiniz transit halindedir.</CardDescription>
             </div>
             <Link href="/orders">
-              <Button variant="ghost" size="sm" className="gap-1 text-primary">View All <ArrowRight className="h-4 w-4"/></Button>
+              <Button variant="ghost" size="sm" className="gap-1 text-primary">Tüm Siparişler <ArrowRight className="h-4 w-4"/></Button>
             </Link>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {[
-                { id: "ORD-2024-001", date: "2024-10-24", amount: "$1,240.00", status: "In Transit", items: 12 },
-                { id: "ORD-2024-002", date: "2024-10-20", amount: "$5,320.50", status: "Processing", items: 45 },
-                { id: "ORD-2024-003", date: "2024-10-18", amount: "$890.00", status: "Delivered", items: 5 },
+                { id: "SIP-2024-001", date: "24 Ekim 2024", amount: "1.240,00 ₺", status: "Kargo'da", items: 12 },
+                { id: "SIP-2024-002", date: "20 Ekim 2024", amount: "5.320,50 ₺", status: "İşleniyor", items: 45 },
+                { id: "SIP-2024-003", date: "18 Ekim 2024", amount: "890,00 ₺", status: "Teslim Edildi", items: 5 },
               ].map((order, i) => (
                 <div key={i} className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/50">
                    <div className="flex items-center gap-4">
@@ -82,14 +82,14 @@ export default function Dashboard() {
                       </div>
                       <div>
                         <p className="font-mono font-medium text-sm">{order.id}</p>
-                        <p className="text-xs text-muted-foreground">{order.items} items • {order.date}</p>
+                        <p className="text-xs text-muted-foreground">{order.items} ürün • {order.date}</p>
                       </div>
                    </div>
                    <div className="text-right">
                       <p className="font-mono font-bold text-sm">{order.amount}</p>
                       <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${
-                        order.status === "Delivered" ? "bg-green-100 text-green-700" :
-                        order.status === "In Transit" ? "bg-blue-100 text-blue-700" :
+                        order.status === "Teslim Edildi" ? "bg-green-100 text-green-700" :
+                        order.status === "Kargo'da" ? "bg-blue-100 text-blue-700" :
                         "bg-yellow-100 text-yellow-700"
                       }`}>
                         {order.status}
@@ -101,32 +101,32 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* Announcements / Quick Actions */}
+        {/* Announcements */}
         <Card className="shadow-sm bg-sidebar text-sidebar-foreground border-none">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <AlertCircle className="h-5 w-5 text-primary" />
-              Announcements
+              Duyurular
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="p-3 bg-white/5 rounded border border-white/10">
-              <h4 className="font-bold text-sm mb-1 text-primary">Price Update Notice</h4>
+              <h4 className="font-bold text-sm mb-1 text-primary">Fiyat Güncellemesi</h4>
               <p className="text-xs text-sidebar-foreground/70">
-                Effective Nov 1st, SKF product lines will see a 2% price adjustment due to raw material costs.
+                1 Kasım'dan itibaren SKF ürün hatlarında hammadde maliyetleri sebebiyle %2 fiyat artışı yapılacaktır.
               </p>
             </div>
             <div className="p-3 bg-white/5 rounded border border-white/10">
-              <h4 className="font-bold text-sm mb-1 text-green-400">System Maintenance</h4>
+              <h4 className="font-bold text-sm mb-1 text-green-400">Sistem Bakımı</h4>
               <p className="text-xs text-sidebar-foreground/70">
-                Scheduled maintenance this Sunday from 2AM to 4AM.
+                Bu Pazar saat 02:00-04:00 arası planlı bakım çalışmaları yapılacaktır.
               </p>
             </div>
             
             <div className="pt-4 mt-auto">
                <Link href="/products">
                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                   Create New Order
+                   Yeni Sipariş Oluştur
                  </Button>
                </Link>
             </div>

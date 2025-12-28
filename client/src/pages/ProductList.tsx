@@ -40,10 +40,10 @@ export default function ProductList() {
     if (qty > 0) {
       addToCart(product, qty);
       toast({
-        title: "Added to cart",
-        description: `${qty} x ${product.stockCodes[0]} added to your order.`,
+        title: "Sepete eklendi",
+        description: `${qty} x ${product.stockCodes[0]} siparişinize eklendi.`,
       });
-      setQuantities(prev => ({ ...prev, [product.id]: 0 })); // Reset input
+      setQuantities(prev => ({ ...prev, [product.id]: 0 }));
     }
   };
 
@@ -58,8 +58,8 @@ export default function ProductList() {
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
-            <h2 className="text-3xl font-heading font-bold text-foreground">Product Search</h2>
-            <p className="text-muted-foreground">Browse {MOCK_PRODUCTS.length} industrial items available for immediate dispatch.</p>
+            <h2 className="text-3xl font-heading font-bold text-foreground">Ürün Arama</h2>
+            <p className="text-muted-foreground">{MOCK_PRODUCTS.length} endüstriyel ürün göz önüne alındığında hemen gönderm için.</p>
           </div>
         </div>
 
@@ -69,7 +69,7 @@ export default function ProductList() {
               <div className="flex-1 relative">
                  <Search className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
                  <Input 
-                   placeholder="Search by Stock Code, Dimensions, or Brand..." 
+                   placeholder="Stok Kodu, Ölçüler veya Marka ile ara..." 
                    className="pl-10 h-10 border-border/60 bg-muted/20" 
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
@@ -77,10 +77,10 @@ export default function ProductList() {
               </div>
               <div className="flex gap-2">
                  <Button variant="outline" className="border-border/60 gap-2">
-                   <Filter className="h-4 w-4" /> Filters
+                   <Filter className="h-4 w-4" /> Filtreler
                  </Button>
                  <Button className="bg-destructive text-white hover:bg-destructive/90 w-32">
-                   Search
+                   Ara
                  </Button>
               </div>
            </div>
@@ -88,15 +88,15 @@ export default function ProductList() {
            <div className="flex flex-wrap gap-6 pt-2 border-t border-border/40">
               <div className="flex items-center gap-2">
                 <Checkbox id="instock" />
-                <label htmlFor="instock" className="text-sm font-medium leading-none cursor-pointer">In Stock Only</label>
+                <label htmlFor="instock" className="text-sm font-medium leading-none cursor-pointer">Sadece Stokta Olanlar</label>
               </div>
               <div className="flex items-center gap-2">
                 <Checkbox id="campaign" />
-                <label htmlFor="campaign" className="text-sm font-medium leading-none cursor-pointer">Campaign Items</label>
+                <label htmlFor="campaign" className="text-sm font-medium leading-none cursor-pointer">Kampanya Ürünleri</label>
               </div>
               <div className="flex items-center gap-2">
                 <Checkbox id="new" />
-                <label htmlFor="new" className="text-sm font-medium leading-none cursor-pointer">New Arrivals</label>
+                <label htmlFor="new" className="text-sm font-medium leading-none cursor-pointer">Yeni Gelenler</label>
               </div>
            </div>
         </div>
@@ -106,14 +106,14 @@ export default function ProductList() {
           <Table>
             <TableHeader className="bg-muted/30">
               <TableRow>
-                <TableHead className="w-[80px] text-center">Status</TableHead>
-                <TableHead className="w-[180px]">Stock Code</TableHead>
-                <TableHead>Product Description</TableHead>
-                <TableHead className="w-[100px]">Brand</TableHead>
-                <TableHead className="w-[120px] text-right">List Price</TableHead>
-                <TableHead className="w-[120px] text-right">Your Price</TableHead>
-                <TableHead className="w-[100px] text-center">Discount</TableHead>
-                <TableHead className="w-[160px] text-center">Order Qty</TableHead>
+                <TableHead className="w-[80px] text-center">Durum</TableHead>
+                <TableHead className="w-[180px]">Stok Kodu</TableHead>
+                <TableHead>Ürün Açıklaması</TableHead>
+                <TableHead className="w-[100px]">Marka</TableHead>
+                <TableHead className="w-[120px] text-right">Liste Fiyatı</TableHead>
+                <TableHead className="w-[120px] text-right">Bayi Fiyatı</TableHead>
+                <TableHead className="w-[100px] text-center">İndirim</TableHead>
+                <TableHead className="w-[160px] text-center">Sipariş Miktarı</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -133,7 +133,7 @@ export default function ProductList() {
                        {product.stockStatus === "low-stock" && (
                          <div className="flex flex-col items-center text-yellow-600">
                            <Clock className="h-5 w-5" />
-                           <span className="text-[10px] font-bold">Low</span>
+                           <span className="text-[10px] font-bold">Az</span>
                          </div>
                        )}
                        {product.stockStatus === "out-of-stock" && (
@@ -145,7 +145,7 @@ export default function ProductList() {
                        {product.stockStatus === "pre-order" && (
                          <div className="flex flex-col items-center text-blue-500">
                            <Info className="h-5 w-5" />
-                           <span className="text-[10px] font-bold">Pre</span>
+                           <span className="text-[10px] font-bold">Ön</span>
                          </div>
                        )}
                     </TableCell>
@@ -208,7 +208,7 @@ export default function ProductList() {
         </div>
         
         <div className="text-center text-sm text-muted-foreground pt-4">
-           Showing {filteredProducts.length} results.
+           {filteredProducts.length} sonuç gösteriliyor.
         </div>
       </div>
     </DashboardLayout>
