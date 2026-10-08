@@ -1,6 +1,57 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+dist/
+dist-electron/
+
+# Misc
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+
+# Build artifacts
+*.tsbuildinfo
+.eslintcache
+
+# Electron
+out/
+build/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Session
+sessions/
+
+# Uploads (if needed to be ignored)
+# uploaded_files/
